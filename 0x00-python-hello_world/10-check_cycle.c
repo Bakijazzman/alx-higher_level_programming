@@ -18,7 +18,7 @@ int check_cycle(listint_t *list)
 	slug = list->next;
 	hare = list->next->next;
 
-	while (slug && hare && hare->next)
+	for (; slug && hare && hare->next; )
 	{
 		if (slug == hare)
 			return (1);
