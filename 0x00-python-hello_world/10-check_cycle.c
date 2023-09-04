@@ -11,7 +11,7 @@ int check_cycle(listint_t *list)
 	
 	slug = list;
 	hare = list;
-	for (; slug && hare && hare->next; )
+	while (slug && hare && hare->next)
 	{
 		hare = hare->next->next;
 		slug = slug->next;
