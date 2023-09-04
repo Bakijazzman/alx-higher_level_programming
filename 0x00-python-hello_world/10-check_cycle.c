@@ -1,22 +1,31 @@
+#include <stdlib.h>
 #include "lists.h"
 
 /**
- * check_cycle - find a loop in a list
- * @list: points to the start of the list
- * Return: 0 if no cycle, 1 if cycle
+ * check_cycle - Checks if a singly-linked list contains a cycle.
+ * @list: A singly-linked list.
+ *
+ * Return: If there is no cycle - 0.
+ *         If there is a cycle - 1.
  */
 int check_cycle(listint_t *list)
 {
 	listint_t *slug, *hare;
-	
-	slug = list;
-	hare = list;
+
+	if (!list || list->next == NULL)
+		return (0);
+
+	slug = list->next;
+	hare = list->next->next;
+
 	while (slug && hare && hare->next)
 	{
-		hare = hare->next->next;
-		slug = slug->next;
 		if (slug == hare)
 			return (1);
+
+		slug = slug->next;
+		hare = hare->next->next;
 	}
+
 	return (0);
 }
