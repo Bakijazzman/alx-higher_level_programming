@@ -9,8 +9,6 @@ int check_cycle(listint_t *list)
 {
 	listint_t *slug, *hare;
 	
-	if (!list)
-		return (0);
 	slug = list;
 	hare = list;
 	for (; slug && hare && hare->next; )
