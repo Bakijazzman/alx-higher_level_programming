@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 if __name__ == "__main__":
-    #the sum of 1 and 2
+    # the sum of 1 and 2
     from add_0 import add
     a = 1
     b = 2
