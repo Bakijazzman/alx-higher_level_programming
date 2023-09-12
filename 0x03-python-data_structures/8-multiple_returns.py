@@ -2,10 +2,10 @@
 
 
 def multiple_returns(sentence):
+    Tuple = ()
     if len(sentence) == 0:
-        sentence[i] = None
-    i = 0
-    length = len(sentence)
-    result = (length, sentence[i])
-
-    return result
+        Tuple = 0, None
+    else:
+        length = len(sentence)
+        Tuple = length,sentence[0]
+    return Tuple
