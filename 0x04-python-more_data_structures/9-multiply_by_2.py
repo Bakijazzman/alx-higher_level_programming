@@ -1,5 +1,5 @@
 def multiply_by_2(a_dictionary):
     new = dict(a_dictionary)
-    for mem in new:
-        new[mem] *= 2
+    for mem1, mem2 in new.items():
+        new[mem1] = mem2 * 2
     return new
