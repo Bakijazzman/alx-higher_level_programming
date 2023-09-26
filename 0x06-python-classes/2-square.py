@@ -1,24 +1,18 @@
 #!/usr/bin/python3
-"""Defining a Square"""
+"""Define a class Square."""
 
 
 class Square:
-    """Square Class"""
+    """Represent a square."""
 
     def __init__(self, size=0):
-        """class instance
+        """Initialize a new Square.
 
-            Args:
-                size: the size of the square
-
-            Raises:
-                TypeError: size must be an integer
-                ValueError: size must be >= 0
+        Args:
+            size (int): The size of the new square.
         """
-
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
-        if size < 0:
-            raise ValueError("size of int must be >= 0")
-
+        elif size < 0:
+            raise ValueError("size must be >= 0")
         self.__size = size
