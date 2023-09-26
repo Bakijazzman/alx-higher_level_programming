@@ -30,6 +30,7 @@ class Square:
         """resturns value of size square"""
         result = self.__size * self.__size
         return result
+
     def my_print(self):
         """Print the area of a square with the char #"""
         for i in range(0, self.size):
