@@ -81,10 +81,10 @@ class Rectangle:
         self.__class__.number_of_instances -= 1
 
     def bigger_or_equal(rect_1, rect_2):
-        """checks wchich rectangle is bigger 
+        """checks wchich rectangle is bigger
         Args:
             rect_1: the first instance
-            rect_2: the second instance 
+            rect_2: the second instance
         Raises:
             TypeError: if it is not an instance  of rectangle
         Return:
