@@ -88,7 +88,7 @@ class Rectangle:
             rect_2: the second instance
         Raises:
             TypeError: if it is not an instance  of rectangle
-        Return:
+        Returns:
             first instance if bot have same value
         """
         if not isinstance(rect_1, Rectangle):
