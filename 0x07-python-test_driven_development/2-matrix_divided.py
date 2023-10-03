@@ -43,7 +43,8 @@ def matrix_divided(matrix, div):
                 raise TypeError(
                     "matrix must be a matrix (list of lists) of integers/floats"
                 )
-    return [[round(element / div, 2) for element in row] for row in matrix]
+    new_matrix = [[round(element / div, 2) for element in row] for row in matrix]
+    return new_matrix
 
 
 if __name__ == "__main__":
