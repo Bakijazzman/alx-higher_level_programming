@@ -19,14 +19,19 @@ def lazy_matrix_mul(m_a, m_b):
                not int or float, or inner lists are not of the same len
 
         ValueError: if lists are empty, or items cannot be multiplied
-        TypeError: If m_a or m_b have non-int/float values or are not rectangular.
+        TypeError: If m_a or m_b have non-int/float values
+        or are not rectangular.
     """
 
     if not all(isinstance(row, list) for row in m_a):
-        raise TypeError("m_a must be a matrix (list of lists) of integers/floats")
+        raise TypeError(" m_a must be a matrix" +
+                        " (list of lists) of integers/floats"
+                        )
 
     if not all(isinstance(row, list) for row in m_b):
-        raise TypeError("m_b must be a matrix (list of lists) of integers/floats")
+        raise TypeError("m_b must be a matrix" +
+                        " (list of lists) of integers/floats"
+                        )
 
     if len(m_a) == 0 or len(m_a[0]) == 0 or len(m_a[0]) != len(m_b):
         raise ValueError("m_a and m_b cannot be multiplied")
