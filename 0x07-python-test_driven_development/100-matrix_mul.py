@@ -1,22 +1,25 @@
 #!/usr/bin/python3
-"""Write imported module here"""
+"""
+This module contains a function that multiplies 2 matrices
+"""
 
 
 def matrix_mul(m_a, m_b):
-    """Func that multiplies two matrices
-
+    """This function multiplies two matrices
     Args:
-        m_a: the first matrix
-        m_b: the second matrix
-
+        m_a (list of lists of int/float): Matrix to be multiplied
+        m_b (list of lists of int/float): Matrix to be multiplied
     Raises:
-        TypeError:m_a or m_b is not a list , m list of lists, if elements are
-               not int or float, or inner lists are not of the same len
-
-        ValueError: if lists are empty, or items cannot be multiplied
-
-    Returns: the product matrix
+        TypeError: If m_a or m_b is not a list
+        TypeError: If m_a or m_b is not a list of lists
+        TypeError: If one element of list of lists is not int/float
+        TypeError: If row of m_a or m_b are not the same size
+        ValueError: If m_a or m_b is empty
+        ValueError: If m_a and m_b cannot be multiplied
+    Returns:
+        A new list which is the outcome of the multiplication
     """
+
     if not isinstance(m_a, list):
         raise TypeError("m_a must be a list")
     if not isinstance(m_b, list):
@@ -29,36 +32,39 @@ def matrix_mul(m_a, m_b):
 
     if m_a == [] or m_a == [[]]:
         raise ValueError("m_a can't be empty")
-    if m_b == [] or m_a == [[]]:
+    if m_b == [] or m_b == [[]]:
         raise ValueError("m_b can't be empty")
 
-    for row in m_a:
-        for element in row:
-            if not isinstance(element, (int, float)):
-                raise TypeError("m_a should contain only integers or floats")
-    for row in m_b:
-        for element in row:
-            if not isinstance(element, (int, float)):
-                raise TypeError("m_b should contain only integers or floats")
+    if not all((isinstance(element, int) or isinstance(element, float))
+               for element in [number for row in m_a for number in row]):
+        raise TypeError("m_a should contain only integers or floats")
+    if not all((isinstance(element, int) or isinstance(element, float))
+               for element in [number for row in m_b for number in row]):
+        raise TypeError("m_b should contain only integers or floats")
 
     if not all(len(row) == len(m_a[0]) for row in m_a):
-        raise TypeError("each row of m_a must be of the same size")
+        raise TypeError("each row of m_a must should be of the same size")
     if not all(len(row) == len(m_b[0]) for row in m_b):
-        raise TypeError("each row of m_b must be of the same size")
+        raise TypeError("each row of m_b must should be of the same size")
 
     if len(m_a[0]) != len(m_b):
         raise ValueError("m_a and m_b can't be multiplied")
 
-    result = [[0] * len(m_b[0]) for _ in range(len(m_a))]
-    for i in range(len(m_a)):
-        for j in range(len(m_b[0])):
-            for k in range(len(m_b)):
-                result[i][j] += m_a[i][k] * m_b[k][j]
+    matrix1 = []
+    for i in range(len(m_b[0])):
+        my_row = []
+        for j in range(len(m_b)):
+            my_row.append(m_b[j][i])
+        matrix1.append(my_row)
 
-    return result
+    matrix2 = []
+    for row in m_a:
+        my_row = []
+        for column in matrix1:
+            product = 0
+            for m in range(len(matrix1[0])):
+                product += row[m] * column[m]
+            my_row.append(product)
+        matrix2.append(my_row)
 
-
-if __name__ == "__main__":
-    import doctest
-
-    doctest.testfile("tests/100-matrix_mul.txt")
+    return matrix2
