@@ -1,95 +1,64 @@
 #!/usr/bin/python3
-"""
-
-Module composed by a function that multiplies 2 matrices
-
-"""
+"""Write imported module here"""
 
 
 def matrix_mul(m_a, m_b):
-    """ Function that multiplies 2 matrices
+    """Func that multiplies two matrices
 
     Args:
-        m_a: matrix a
-        m_b: matrix b
-
-    Returns:
-        result of the multiplication
+        m_a: the first matrix
+        m_b: the second matrix
 
     Raises:
-        TypeError: if m_a or m_b aren't a list
-        TypeError: if m_a or m_b aren't a list of a lists
-        ValueError: if m_a or m_b are empty
-        TypeError: if the lists of m_a or m_b don't have integers or floats
-        TypeError: if the rows of m_a or m_b don't have the same size
-        ValueError: if m_a and m_b can't be multiplied
+        TypeError:m_a or m_b is not a list , m list of lists, if elements are
+               not int or float, or inner lists are not of the same len
 
+        ValueError: if lists are empty, or items cannot be multiplied
 
+    Returns: the product matrix
     """
-
     if not isinstance(m_a, list):
         raise TypeError("m_a must be a list")
-
     if not isinstance(m_b, list):
         raise TypeError("m_b must be a list")
 
-    for mem in m_a:
-        if not isinstance(mem, list):
-            raise TypeError("m_a must be a list of lists")
+    if not all(isinstance(row, list) for row in m_a):
+        raise TypeError("m_a must be a list of lists")
+    if not all(isinstance(row, list) for row in m_b):
+        raise TypeError("m_b must be a list of lists")
 
-    for mem in m_b:
-        if not isinstance(mem, list):
-            raise TypeError("m_b must be a list of lists")
-
-    if len(m_a) == 0 or (len(m_a) == 1 and len(m_a[0]) == 0):
+    if m_a == [] or m_a == [[]]:
         raise ValueError("m_a can't be empty")
-
-    if len(m_b) == 0 or (len(m_b) == 1 and len(m_b[0]) == 0):
+    if m_b == [] or m_a == [[]]:
         raise ValueError("m_b can't be empty")
 
-    for lists in m_a:
-        for mem in lists:
-            if not type(mem) in (int, float):
+    for row in m_a:
+        for element in row:
+            if not isinstance(element, (int, float)):
                 raise TypeError("m_a should contain only integers or floats")
-
-    for lists in m_b:
-        for mem in lists:
-            if not type(mem) in (int, float):
+    for row in m_b:
+        for element in row:
+            if not isinstance(element, (int, float)):
                 raise TypeError("m_b should contain only integers or floats")
 
-    l = 0
-
-    for mem in m_a:
-        if l != 0 and l != len(mem):
-            raise TypeError("each row of m_a must be of the same size")
-        l = len(mem)
-
-    l = 0
-
-    for mem in m_b:
-        if l != 0 and l != len(mem):
-            raise TypeError("each row of m_b must be of the same size")
-        length = len(mem)
+    if not all(len(row) == len(m_a[0]) for row in m_a):
+        raise TypeError("each row of m_a must be of the same size")
+    if not all(len(row) == len(m_b[0]) for row in m_b):
+        raise TypeError("each row of m_b must be of the same size")
 
     if len(m_a[0]) != len(m_b):
         raise ValueError("m_a and m_b can't be multiplied")
 
-    r1 = []
-    i1 = 0
+    result = [[0] * len(m_b[0]) for _ in range(len(m_a))]
+    for i in range(len(m_a)):
+        for j in range(len(m_b[0])):
+            for k in range(len(m_b)):
+                result[i][j] += m_a[i][k] * m_b[k][j]
 
-    for a in m_a:
-        r2 = []
-        i2 = 0
-        num = 0
-        while (i2 < len(m_b[0])):
-            num += a[i1] * m_b[i1][i2]
-            if i1 == len(m_b) - 1:
-                i1 = 0
-                i2 += 1
-                r2.append(num)
-                num = 0
-            else:
-                i1 += 1
-        r1.append(r2)
+    return result
 
-    return r1
+
+if __name__ == "__main__":
+    import doctest
+
+    doctest.testfile("tests/100-matrix_mul.txt")
