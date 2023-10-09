@@ -5,4 +5,4 @@ def lookup(obj):
         obj: the object to lookup
         Return: list of available attributes and modules
     """
-    return dict(obj)
+    return dir(obj)
