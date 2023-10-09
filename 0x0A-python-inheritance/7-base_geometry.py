@@ -1,4 +1,4 @@
-#!/usrbin/python3
+#!/usr/bin/python3
 """Imports module here """
 
 
@@ -10,6 +10,7 @@ class BaseGeometry:
 
     def integer_validator(self, name, value):
         """validates inputs
+
         Args:
             name: a string to be checked
             value: must be greater than 0
