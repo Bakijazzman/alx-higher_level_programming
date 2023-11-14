@@ -1,2 +1,2 @@
--- Creating a databse
-CREATE DATABASE IF NO EXISTS hbtn_0c_0;
+-- Creating a databse.
+CREATE DATABASE IF NOT EXISTS hbtn_0c_0;
