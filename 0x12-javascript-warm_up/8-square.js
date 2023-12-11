@@ -14,5 +14,5 @@ if (!isNaN(sqr)) {
     console.log(print);
   }
 } else {
-  console.log('Missing Size');
+  console.log('Missing size');
 }
