@@ -1,12 +1,11 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
     Import Modules Here
 """
 import MySQLdb
 from sys import argv
 
-
-def main():
+if __name__ == "__main__":
     """
         this functions gets arguments passed in
     """
@@ -17,22 +16,16 @@ def main():
     db_port = 3306
     db_host = "localhost"
 
-    try:
-        connector = MySQLdb.connect(host=db_host, port=db_port,
-                                    user=db_username, passwd=db_password,
-                                    db=db_name, charset="utf8")
-        cursor = connector.cursor()
-        query = "SELECT * FROM states WHERE name = '{}'"
-        passed = query.format(sort_by)
-        rows = cursor.fetchall()
-        for row in rows:
-            if row[1] == sort_by:
-                print(row)
-        cursor.close()
-        connector.close()
-    except Exception:
-        pass
-
-
-if __name__ == "__main__":
-    main()
+    connector = MySQLdb.connect(host=db_host, port=db_port,
+                                user=db_username, passwd=db_password,
+                                db=db_name, charset="utf8")
+    cursor = connector.cursor()
+    query = "SELECT * FROM states WHERE name = '{}'"
+    passed = query.format(sort_by)
+    cursor.execute(passed)
+    rows = cursor.fetchall()
+    for row in rows:
+        if row[1] == sort_by:
+            print(row)
+    cursor.close()
+    connector.close()
