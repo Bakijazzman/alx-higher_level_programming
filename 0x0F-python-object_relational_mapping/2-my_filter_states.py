@@ -13,6 +13,7 @@ def main():
     db_username = argv[1]
     db_password = argv[2]
     db_name = argv[3]
+    sort_by = argv[4]
     db_port = 3306
     db_host = "localhost"
 
@@ -21,10 +22,11 @@ def main():
                                     user=db_username, passwd=db_password,
                                     db=db_name, charset="utf8")
         cursor = connector.cursor()
-        cursor.execute("SELECT id, name FROM states ORDER BY id ASC")
+        query = "SELECT * FROM states WHERE name = '{}'"
+        passed = query.format(sort_by)
         rows = cursor.fetchall()
         for row in rows:
-            if row[1][0] == 'N':
+            if row[1] == sort_by:
                 print(row)
         cursor.close()
         connector.close()
