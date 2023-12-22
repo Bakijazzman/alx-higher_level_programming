@@ -9,9 +9,9 @@ if __name__ == "__main__":
     """
         this functions gets arguments passed in
     """
-    db_username = argv[1]
-    db_password = argv[2]
-    db_name = argv[3]
+    username = argv[1]
+    password = argv[2]
+    dbname = argv[3]
     sort_by = argv[4]
     db_port = 3306
     db_host = "localhost"
