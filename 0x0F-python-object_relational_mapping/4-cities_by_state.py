@@ -17,7 +17,7 @@ def main():
     db_host = "localhost"
 
     try:
-        command = "SELECT cities.id, cities.name, states.name"
+        command = "SELECT cities.id, cities.name, states.name "
         command += "FROM cities LEFT JOIN states "
         command += "ON cities.states_id=states.id "
         command += "ORDER BY cities.id ASC"
