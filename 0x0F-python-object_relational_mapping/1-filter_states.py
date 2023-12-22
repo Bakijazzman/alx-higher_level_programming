@@ -2,8 +2,9 @@
 """
     Import Modules Here
 """
-import MySQLdd
+import MySQLdb
 import sys
+
 
 def main():
     """
