@@ -18,8 +18,8 @@ def main():
 
     try:
         command = "SELECT cities.id, cities.name, states.name"
-        command += "FROM cities LEFT JOIN states"
-        command += "ON cities.states_id=states.id"
+        command += "FROM cities LEFT JOIN states "
+        command += "ON cities.states_id=states.id "
         command += "ORDER BY cities.id ASC"
         connector = MySQLdb.connect(host=db_host, port=db_port,
                                     user=db_username, passwd=db_password,
@@ -28,8 +28,7 @@ def main():
         cursor.execute(command)
         rows = cursor.fetchall()
         for row in rows:
-            if row[1][0] == 'N':
-                print(row)
+            print(row)
         cursor.close()
         connector.close()
     except Exception:
