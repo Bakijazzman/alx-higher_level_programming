@@ -17,8 +17,8 @@ if __name__ == "__main__":
     db_host = "localhost"
 
     connector = MySQLdb.connect(host=db_host, port=db_port,
-                                user=db_username, passwd=db_password,
-                                db=db_name, charset="utf8")
+                                user=username, passwd=password,
+                                db=dbname, charset="utf8")
     cursor = connector.cursor()
     query = "SELECT * FROM states WHERE name = '{}'"
     passed = query.format(sort_by)
