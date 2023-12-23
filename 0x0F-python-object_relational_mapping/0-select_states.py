@@ -2,8 +2,8 @@
 """
     Import Modules Here
 """
-import MySQLdd
-import sys
+import MySQLdb
+from sys import argv
 
 def main():
     """
