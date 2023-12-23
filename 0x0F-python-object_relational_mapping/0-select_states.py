@@ -5,6 +5,7 @@
 import MySQLdb
 from sys import argv
 
+
 def main():
     """
         this functions gets arguments passed in
