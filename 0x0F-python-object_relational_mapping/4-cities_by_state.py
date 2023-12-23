@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
     Import Modules Here
 """
@@ -19,7 +19,7 @@ def main():
     try:
         command = "SELECT cities.id, cities.name, states.name "
         command += "FROM cities JOIN states "
-        command += "ON cities.states_id = states.id "
+        command += "ON cities.state_id = states.id "
         command += "ORDER BY cities.id ASC"
         connector = MySQLdb.connect(host=db_host, port=db_port,
                                     user=db_username, passwd=db_password,
