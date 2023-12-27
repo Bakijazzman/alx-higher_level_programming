@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
     Import Modules Here
 """
@@ -7,6 +7,7 @@ from relationship_state import Base, State
 from relationship_city import City
 from sqlalchemy import (create_engine)
 from sqlalchemy.orm import Session, sessionmaker
+
 
 def main():
     """
@@ -31,7 +32,6 @@ def main():
     new_city = City(name='San Francisco', state=new_state)
     session.add(new_city)
     session.commit()
-    session.close()
 
 
 if __name__ == "__main__":
