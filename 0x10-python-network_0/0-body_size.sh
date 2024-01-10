@@ -1,4 +1,3 @@
 #!/bin/bash
-# A script that takes a url and sends a request to the url
-# Also diisplays tthe size of tthe body of the response
-curl -w "%{size_download}\n" "$1" -so /dev/null
+# Get the comtent-lenght of a giving ip address
+curl -sI "$1" | awk '/Content-Length/{print $2}'
