@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """Import modules here"""
-"""Fetches https://alx-intranet.hbtn.io/status."""
 import urllib.request
 
 
