@@ -1,4 +1,4 @@
-#!/urs/bin/python3
+#!/usr/bin/python3
 """Import Modules Here """
 from sys import argv
 import requests
@@ -6,7 +6,7 @@ import requests
 
 if __name__ == "__main__":
     url = "https://api.github.com/user"
-    response = request.get(url, auth=(argv[1], argv[2]))
+    response = requests.get(url, auth=(argv[1], argv[2]))
     try:
         print(response.json().get("id"))
     except ValueError:
