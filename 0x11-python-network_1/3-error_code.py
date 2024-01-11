@@ -6,7 +6,7 @@ from urllib.request import urlopen, Request
 
 
 if __name__ == "__main__":
-    try: 
+    try:
         with urlopen(Request(argv[1])) as response:
             body = response.read()
             print(body.decode('utf-8'))
