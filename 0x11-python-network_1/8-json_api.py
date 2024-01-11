@@ -12,9 +12,9 @@ if __name__ == "__main__":
         response = requests.post(url, data=a)
         try:
             result = response.json()
-            if result == {}:
-                print("No result")
+            if result:
+                print("[{}] {}".format(result.get("id"), result.get("name")))
             else:
-                print(f"[{result.get("id")}], {result.get("name")}")
+                print("No result")
         except ValueError:
             print("Not a valid JSON")
